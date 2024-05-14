@@ -15,4 +15,6 @@ export function MountEndpoints (api) {
 	api.post('/files', xTokenAuthenticate, FilesController.postUpload)
   api.get('/files/:id', xTokenAuthenticate, FilesController.getShow);
   api.get('/files', xTokenAuthenticate, FilesController.getIndex);
+  api.put('/files/:id/publish', xTokenAuthenticate, FilesController.putPublish);
+  api.put('/files/:id/unpublish', xTokenAuthenticate, FilesController.putUnpublish);
 }
