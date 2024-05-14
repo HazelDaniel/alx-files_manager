@@ -13,4 +13,6 @@ export function MountEndpoints (api) {
   api.get('/connect', basicAuthenticate, AuthController.getConnect);
   api.get('/disconnect', xTokenAuthenticate, AuthController.getDisconnect);
 	api.post('/files', xTokenAuthenticate, FilesController.postUpload)
+  api.get('/files/:id', xTokenAuthenticate, FilesController.getShow);
+  api.get('/files', xTokenAuthenticate, FilesController.getIndex);
 }
