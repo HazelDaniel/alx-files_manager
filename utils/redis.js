@@ -10,7 +10,7 @@ class RedisClient {
    * Creates a new RedisClient instance and establishes a connection to the Redis server.
    */
   constructor() {
-    this.redis = createClient(); // Use `redis` for clarity
+    this.redis = createClient();
 
     this.redis.on('error', (error) => {
       console.error('Redis connection failed:', error.message || error.toString());
