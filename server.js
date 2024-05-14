@@ -14,7 +14,9 @@ const app = express();
  */
 export const basicAuthenticate = async (req, res, next) => {
 	try {
+		console.log("getting authenticated user");
 		const user = await getUserFromAuthorization(req);
+		console.log("got authenticated user ", user);
 		if (!user) {
 			res.status(401).json({ error: 'Unauthorized' });
 			return;
