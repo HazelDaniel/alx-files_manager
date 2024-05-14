@@ -12,15 +12,13 @@ class DBClient {
    * Uses environment variables for configuration.
    */
   constructor() {
-    envLoader(); // Assuming this loads environment variables
+    envLoader();
 
-    const dbConfig = {
-      host: process.env.DB_HOST || 'localhost',
-      port: process.env.DB_PORT || 27017,
-      database: process.env.DB_DATABASE || 'files_manager',
-    };
+		const host = process.env.DB_HOST || 'localhost';
+		const port = process.env.DB_PORT || 27017;
+		const database = process.env.DB_DATABASE || 'files_manager';
 
-    const dbUrl = `mongodb://${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
+    const dbUrl = `mongodb://${host}:${port}/${database}`;
 
     this.mongoClient = new mongodb.MongoClient(dbUrl, { useUnifiedTopology: true });
     this.mongoClient.connect();
