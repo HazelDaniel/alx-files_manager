@@ -1,4 +1,3 @@
-import envLoader from './env_loader';
 // eslint-disable-next-line no-unused-vars
 import Collection from "mongodb/lib/collection";
 import { MongoClient } from 'mongodb';
@@ -12,7 +11,6 @@ class DBClient {
    * Uses environment variables for configuration.
    */
   constructor() {
-    envLoader();
 
 		const host = process.env.DB_HOST || 'localhost';
 		const port = process.env.DB_PORT || 27017;
