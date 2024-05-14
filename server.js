@@ -1,4 +1,5 @@
 import express from 'express';
+import { MountEndpoints } from './routes';
 
 const app = express();
 
@@ -7,8 +8,8 @@ const startServer = (api) => {
   const env = process.env.npm_lifecycle_event || 'dev';
 
 	api.use(express.json({limit: '200mb'}));
-  api.get('/status', AppController.getStatus);
-  api.get('/stats', AppController.getStats);
+
+	MountEndpoints(api);
 
   api.all('*', (req, res, next) => {
     errorResponse(new APIError(404, `Cannot ${req.method} ${req.url}`), req, res, next);
