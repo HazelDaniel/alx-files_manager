@@ -55,4 +55,4 @@ const startServer = (api) => {
 
 startServer(app);
 
-export default server;
+export default app;
