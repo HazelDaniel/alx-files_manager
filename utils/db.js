@@ -1,7 +1,7 @@
-#!/usr/bin/node
-import mongodb from 'mongodb';
-// eslint-disable-next-line no-unused-vars
 import envLoader from './env_loader';
+// eslint-disable-next-line no-unused-vars
+import Collection from "mongodb/lib/collection";
+import mongodb from 'mongodb';
 
 /**
  * Represents a MongoDB client connection and provides methods for interacting with MongoDB.
@@ -54,7 +54,7 @@ class DBClient {
 
   /**
    * Retrieves a reference to the "users" collection.
-   * @returns {Promise<mongodb.Collection>} Resolves to a reference to the users collection.
+   * @returns {Promise<Collection>} Resolves to a reference to the users collection.
    */
   async usersCollection() {
     return this.client.db().collection('users');
@@ -62,7 +62,7 @@ class DBClient {
 
   /**
    * Retrieves a reference to the "files" collection.
-   * @returns {Promise<mongodb.Collection>} Resolves to a reference to the files collection.
+   * @returns {Promise<Collection>} Resolves to a reference to the files collection.
    */
   async filesCollection() {
     return this.client.db().collection('files');
