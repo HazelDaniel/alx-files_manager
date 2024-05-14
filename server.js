@@ -22,6 +22,7 @@ export const basicAuthenticate = async (req, res, next) => {
 		req.user = user;
 		next();
 	} catch (err) {
+		console.log("we got here");
 		return res.status(500).json({error: 'Internal Server Error'});
 	}
 };
