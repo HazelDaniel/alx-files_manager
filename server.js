@@ -13,14 +13,17 @@ const app = express();
  * @param {NextFunction} next The Express next function.
  */
 export const basicAuthenticate = async (req, res, next) => {
-  const user = await getUserFromAuthorization(req);
-
-  if (!user) {
-    res.status(401).json({ error: 'Unauthorized' });
-    return;
-  }
-  req.user = user;
-  next();
+	try {
+		const user = await getUserFromAuthorization(req);
+		if (!user) {
+			res.status(401).json({ error: 'Unauthorized' });
+			return;
+		}
+		req.user = user;
+		next();
+	} catch (err) {
+		return res.status(500).json({error: 'Internal Server Error'});
+	}
 };
 
 /**
@@ -39,6 +42,8 @@ export const xTokenAuthenticate = async (req, res, next) => {
   req.user = user;
   next();
 };
+
+/* END OF MIDDLEWARES */
 
 /**
  * Represents an error in this API.
