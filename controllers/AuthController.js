@@ -8,7 +8,7 @@ export default class AuthController {
 			const { user } = req;
 			const tokenGenerated = uuidv4();
 
-			await redisClient.set(`auth_${token}`, user._id.toString(), 24 * 60 * 60);
+			await redisClient.set(`auth_${tokenGenerated}`, user._id.toString(), 24 * 60 * 60);
 			res.status(200).json({ token: tokenGenerated });
 		} catch (err) {
 			console.log(err);
