@@ -1,7 +1,7 @@
 import envLoader from './env_loader';
 // eslint-disable-next-line no-unused-vars
 import Collection from "mongodb/lib/collection";
-import mongodb from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 /**
  * Represents a MongoDB client connection and provides methods for interacting with MongoDB.
@@ -20,7 +20,7 @@ class DBClient {
 
     const dbUrl = `mongodb://${host}:${port}/${database}`;
 
-    this.mongoClient = new mongodb.MongoClient(dbUrl, { useUnifiedTopology: true });
+    this.mongoClient = new MongoClient(dbUrl, { useUnifiedTopology: true });
     this.mongoClient.connect();
   }
 
@@ -35,7 +35,6 @@ class DBClient {
   /**
    * Retrieves the number of documents in the "users" collection.
    * @returns {Promise<number>} Resolves to the number of user documents.
-* visited
    */
   async nbUsers() {
     const usersCollection = await this.client.db().collection('users');
@@ -45,7 +44,6 @@ class DBClient {
   /**
    * Retrieves the number of documents in the "files" collection.
    * @returns {Promise<number>} Resolves to the number of file documents.
-* visited
    */
   async nbFiles() {
     const filesCollection = await this.client.db().collection('files');
